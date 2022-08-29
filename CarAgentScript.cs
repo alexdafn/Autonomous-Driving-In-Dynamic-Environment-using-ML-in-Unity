@@ -14,9 +14,9 @@ using Unity.MLAgents.Sensors;
 
 public class CarAgentScript : Agent
 {
-    //Getting the car Reference
+    // Getting the car Reference
     public CarController blueCar;
-    //Getting the road creation reference
+    // Getting the road creation reference
     private RoadSpawner roadSpawner;
 
     //gia katallhlh axrikopoihsh twn timwn ths se kathe episodeio
@@ -28,8 +28,6 @@ public class CarAgentScript : Agent
     //checker for giving reward IF a roadpart has been passed OR  penalty if sideroad has been stepped
     int roadsStraightPassedCounterAgent=0;
     int roadsTurnPassedCounterAgent=0;
-    int penaltyStaightSidePassedCounter=0;
-    int penaltyTurnSidePassedCounter=0; //for turn
 
     public float balanceStabilizerAgent=-0.5f;
     //Δίνεται στην UIScript για να φαίνεται κάτω δεξιά στην οθόνη
@@ -250,52 +248,9 @@ public class CarAgentScript : Agent
 
         blueCar.roadsStraightPassedCounter=0;//counter if a TriggerSpot has been passed by
         blueCar.roadsTurnPassedCounter=0;//counter if a TriggerSpot has been passed by
-        blueCar.penaltyStraightSideCounter=0;
-        blueCar.penaltyTurnSideCounter=0;
         
         roadsStraightPassedCounterAgent=0;//counter if a TriggerSpot has been passed by
         roadsTurnPassedCounterAgent=0;//counter if a TriggerSpot has been passed by
-        penaltyStaightSidePassedCounter=0;
-        penaltyTurnSidePassedCounter=0;
-
-        carRigidBody.velocity= new Vector3(0,0,0);//gia na ksekinaei to amaksi xwris thn prohgoymenh taxythta
-
-        roadsDestroyCounter=0;//Have10MaxRoads()
-        episodeTimer=0;//reset το χρονόμετρο
-        stackedTime=0; //reset το timer για όταν κολάει στα πλαϊνά
-        scoreDisplay=0;
-    }
-
-    //TODELETE
-    private void EpisodeInitialization()
-    {
-        DestroyObjectsInScene(); //destroy all previous roadPieces
-
-        roadSpawner.nextSpawnPoint= new Vector3(0,0,-15); //starting spawn point
-        roadSpawner.turnRoadFlag=0; //proper turn spawning
-
-        //initialize RoadSpawnerManager CLASS values
-        roadSpawnerManager.counter = 0;
-        roadSpawnerManager.roadSelector=1;
-        roadSpawnerManager.rotationSelector=0;
-        roadSpawnerManager.difficultySelector=5;
-
-        StartingRoadPieces(); //create new starting roadPieces
-
-        //initialize CarController CLASS values
-        blueCar.episodeDoneFlag= false;
-        blueCar.transform.position = new Vector3(0,0.5f,0);
-        blueCar.RandomReposition();
-
-        blueCar.roadsStraightPassedCounter=0;//counter if a TriggerSpot has been passed by
-        blueCar.roadsTurnPassedCounter=0;//counter if a TriggerSpot has been passed by
-        blueCar.penaltyStraightSideCounter=0;
-        blueCar.penaltyTurnSideCounter=0;
-        
-        roadsStraightPassedCounterAgent=0;//counter if a TriggerSpot has been passed by
-        roadsTurnPassedCounterAgent=0;//counter if a TriggerSpot has been passed by
-        penaltyStaightSidePassedCounter=0;
-        penaltyTurnSidePassedCounter=0;
 
         carRigidBody.velocity= new Vector3(0,0,0);//gia na ksekinaei to amaksi xwris thn prohgoymenh taxythta
 
