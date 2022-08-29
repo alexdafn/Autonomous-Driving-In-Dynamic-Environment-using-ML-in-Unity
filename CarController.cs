@@ -16,13 +16,13 @@ public class CarController : MonoBehaviour
     // Making a reference for an instance of class RoadSpawnerManager
     private RoadSpawnerManager roadSpawnerManager;
 
+    private int actionNumberGenerator;
     private float horizontalInput;
     private float verticalInput;
     private float currentSteerAngle;
     private float brakeForce;
     private bool isBraking;
-    private int actionNumberGenerator;
-
+    
     // Initial driving values
     [SerializeField] private float motorForce = 1100f;
     public float currentBrakeForce = 2500f;
@@ -30,46 +30,46 @@ public class CarController : MonoBehaviour
 
     // Change in the center of the mass so the car doesn't flip
     public float balanceStabilizer = -0.9f; 
-    public Rigidbody rb;
+    public Rigidbody rb; //Reference on car's rigid body
 
     // Random position
     public float Radius = 0.8f;
 
-    //MakeCarAction()
+    // MakeCarAction()
     public float actionNumber;
 
-    //PositionCalculation()
-    private Vector3 previousPosition, currentPosition, differenceVector;
+    // PositionCalculation()
     public float difference; // totalDifference;
 
-    //RandomReposition()
+    // RandomReposition()
     int randomRotationNumber;
 
-    //Gia xrhsh se alles synarthseis
     public bool episodeDoneFlag; 
     
-    public bool sidePenaltyFlag;
-    public bool turnSidePenaltyFlag;
+    // Used in previous version
+    //public bool sidePenaltyFlag;
+    //public bool turnSidePenaltyFlag;
 
-    public bool leftTurnSidePenaltyFlag;//για όταν πατάει πλαϊνό (ΣΤΡΟΦΗΣ)
-    public bool rightTurnSidePenaltyFlag;//για όταν πατάει πλαϊνό (ΣΤΡΟΦΗΣ)
-    public bool leftSidePenaltyFlag;//για όταν πατάει πλαϊνό (ΕΥΘΕΙΑΣ)
-    public bool rightSidePenaltyFlag;//για όταν πατάει πλαϊνό (ΕΥΘΕΙΑΣ)
-    public bool timerStackedFlag; //για όταν είναι ακίνητο για πολύ ώρα το αμάξι
+    public bool leftTurnSidePenaltyFlag;// when car steps on the side of the road(TURN)
+    public bool rightTurnSidePenaltyFlag;// when car steps on the side of the road(TURN)
+    public bool leftSidePenaltyFlag;// when car steps on the side of the road(STRAIGHT)
+    public bool rightSidePenaltyFlag;// when car steps on the side of the road(STRAIGHT)
+    public bool timerStackedFlag; // used to check the time that the car doens't move
 
-    public int penaltyStraightSideCounter;
-    public int penaltyTurnSideCounter;
+    // Used in previous version
+    //public int penaltyStraightSideCounter;
+    //public int penaltyTurnSideCounter;
 
-    //gia xrhsh sthn antamoivh toy praktora
     public int roadsStraightPassedCounter=0;
     public int roadsTurnPassedCounter=0;
 
-
+    // Getting access on the wheels movement
     [SerializeField] private WheelCollider frontLeftWheelCollider;
     [SerializeField] private WheelCollider frontRightWheelCollider;
     [SerializeField] private WheelCollider rearLeftWheelCollider;
     [SerializeField] private WheelCollider rearRightWheelCollider;
 
+    // Getting access on the wheels position in Unity 3D space system
     [SerializeField] private Transform frontLeftWheelTransform;
     [SerializeField] private Transform frontRightWheelTransform;
     [SerializeField] private Transform rearLeftWheelTransform;
@@ -77,19 +77,19 @@ public class CarController : MonoBehaviour
 
     void Start()
     {
+        // Getting a reference for an instance of class RoadSpawnerManager
         roadSpawnerManager = GameObject.FindObjectOfType<RoadSpawnerManager>();
         rb = GetComponent<Rigidbody>();
     }
 
     private void FixedUpdate()
     {
+        // Most functions used before the creation of the CarAgent Script, for movement testing
         //GetInput();
         //HandleMotor();
         //HandleSteering();
         UpdateWheels();
         //ApplyBraking();
-
-        previousPosition = transform.position;
     }
 
     private void LateUpdate()
