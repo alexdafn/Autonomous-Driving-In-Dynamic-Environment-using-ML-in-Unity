@@ -13,7 +13,7 @@ public class UIScript : MonoBehaviour
     //1float msec;
     //1float sec;
     //1float min;
-    private GamePlay gamePlayObject;
+    //private GamePlay gamePlayObject;
 
     [Header("Component")]
     public Text timer;
