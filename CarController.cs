@@ -45,20 +45,12 @@ public class CarController : MonoBehaviour
     int randomRotationNumber;
 
     public bool episodeDoneFlag; 
-    
-    // Used in previous version
-    //public bool sidePenaltyFlag;
-    //public bool turnSidePenaltyFlag;
 
     public bool leftTurnSidePenaltyFlag;// when car steps on the side of the road(TURN)
     public bool rightTurnSidePenaltyFlag;// when car steps on the side of the road(TURN)
     public bool leftSidePenaltyFlag;// when car steps on the side of the road(STRAIGHT)
     public bool rightSidePenaltyFlag;// when car steps on the side of the road(STRAIGHT)
     public bool timerStackedFlag; // used to check the time that the car doens't move
-
-    // Used in previous version
-    //public int penaltyStraightSideCounter;
-    //public int penaltyTurnSideCounter;
 
     public int roadsStraightPassedCounter=0;
     public int roadsTurnPassedCounter=0;
@@ -110,7 +102,7 @@ public class CarController : MonoBehaviour
         }
     }
 
-
+    //Not in use because of MakeCarAction(), used in previous version
     public void HandleMotor()
     {
         frontLeftWheelCollider.motorTorque = 1 * motorForce ;// 2.3f;
@@ -126,6 +118,7 @@ public class CarController : MonoBehaviour
         rearLeftWheelCollider.brakeTorque = currentBrakeForce;
     }
 
+    //Not in use because of MakeCarAction(), used in previous version
     public void HandleSteering()
     {
         currentSteerAngle = maxSteerAngle * horizontalInput / 2.3f;
@@ -133,6 +126,7 @@ public class CarController : MonoBehaviour
         frontRightWheelCollider.steerAngle = currentSteerAngle;
     }
 
+    // Realistic wheel movement update
     private void UpdateWheels()
     {
         UpdateSingleWheel(frontLeftWheelCollider, frontLeftWheelTransform);
@@ -141,6 +135,7 @@ public class CarController : MonoBehaviour
         UpdateSingleWheel(rearLeftWheelCollider, rearLeftWheelTransform);
     }
 
+    // Realistic wheel movement update
     private void UpdateSingleWheel(WheelCollider WheeleCollider, Transform WheeleTransform)
     {
         Vector3 pos;
@@ -153,7 +148,7 @@ public class CarController : MonoBehaviour
     //Connection with CarAgentScript, when an action is chosen
     public void MakeCarAction(float actionNumber)
     {
-        if(actionNumber==1){//forward
+        if(actionNumber==1){ //forward
             print("Action Taken: Go forward");
             currentBrakeForce = 0;
             frontRightWheelCollider.brakeTorque = currentBrakeForce;
@@ -196,7 +191,7 @@ public class CarController : MonoBehaviour
             frontLeftWheelCollider.motorTorque = 1 * 0 ;
             frontRightWheelCollider.motorTorque = 1 * 0 ;
             //return;
-        }else if (actionNumber==5) //0 FIR STEERING
+        }else if (actionNumber==5) //0 FOR STEERING
         {
             print("did nothing for steering");
             currentSteerAngle = 0* 1 / 2.3f;
@@ -205,6 +200,7 @@ public class CarController : MonoBehaviour
         }
     }
 
+    // Random reposition around the initial position
     public void RandomReposition()
     {
         transform.position = Random.insideUnitCircle*Radius;
@@ -224,6 +220,7 @@ public class CarController : MonoBehaviour
         }
     }*/
 
+    // Used to check if the car is almost standing still
     public void PositionCalculation()
     {
         difference = Mathf.Abs(rb.velocity.x) + Mathf.Abs(rb.velocity.y) + Mathf.Abs(rb.velocity.z);
@@ -232,12 +229,14 @@ public class CarController : MonoBehaviour
     // Collision Handling
     private void OnTriggerEnter(Collider other) 
     {
+        // if a straight road piece has been passed by
         if((other.tag == "TriggerSpot"))
         {
             roadSpawnerManager.SpawnTriggerEntered();
             roadsStraightPassedCounter++;
         }
-
+        
+        // if a turn road piece has been passed by
         if(other.tag == "TurnTriggerSpot")
         {
             roadSpawnerManager.SpawnTriggerEntered();
@@ -245,25 +244,13 @@ public class CarController : MonoBehaviour
 
         }
 
+        // if an environmental object gets hit, ends the episode of training
         if((other.tag == "Tree") || (other.tag == "House") || (other.tag == "Lamp") || (other.tag == "GreenFloor"))
         {
             episodeDoneFlag = true;
         }
 
-        /*
-        if(other.tag == "SideRoad")
-        {
-            //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-            penaltyStraightSideCounter++;
-            sidePenaltyFlag=true;
-        }
-
-        if(other.tag == "TurnSideRoad")
-        {
-            penaltyTurnSideCounter++;
-            turnSidePenaltyFlag=true;
-        }*/
-
+        // Check if the car steps on the side of the road
         if(other.tag =="LeftSide"){leftSidePenaltyFlag=true;timerStackedFlag=true;}
         if(other.tag =="RightSide"){rightSidePenaltyFlag=true;timerStackedFlag=true;}
 
@@ -272,16 +259,7 @@ public class CarController : MonoBehaviour
     }
     private void OnTriggerExit(Collider other)
     {
-        /*
-        if(other.tag == "SideRoad")
-        {
-            sidePenaltyFlag=false;
-        }
-        if(other.tag == "TurnSideRoad")
-        {
-            turnSidePenaltyFlag=false;
-        }*/
-
+        // Check if the car exits the side of the road
         if(other.tag =="LeftSide"){leftSidePenaltyFlag=false;timerStackedFlag=false;}
         if(other.tag =="RightSide"){rightSidePenaltyFlag=false;timerStackedFlag=false;}
 
