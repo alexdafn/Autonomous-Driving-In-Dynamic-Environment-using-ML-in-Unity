@@ -9,9 +9,11 @@ using Random=UnityEngine.Random;
 
 public class CarController : MonoBehaviour
 {
+    // Input for movement
     private const string HORIZONTAL = "Horizontal";
     private const string VERTICAL = "Vertical";
 
+    // Making a reference for an instance of class RoadSpawnerManager
     private RoadSpawnerManager roadSpawnerManager;
 
     private float horizontalInput;
@@ -21,15 +23,16 @@ public class CarController : MonoBehaviour
     private bool isBraking;
     private int actionNumberGenerator;
 
+    // Initial driving values
     [SerializeField] private float motorForce = 1100f;
     public float currentBrakeForce = 2500f;
     public float maxSteerAngle = 120f;
 
-    //Change in the center of the mass so the car doesn't flip
+    // Change in the center of the mass so the car doesn't flip
     public float balanceStabilizer = -0.9f; 
     public Rigidbody rb;
 
-    //random position
+    // Random position
     public float Radius = 0.8f;
 
     //MakeCarAction()
@@ -43,7 +46,7 @@ public class CarController : MonoBehaviour
     int randomRotationNumber;
 
     //Gia xrhsh se alles synarthseis
-    public bool episodeDoneFlag; //isws na kanw gia kathe periptwsh, crashed, fallen, timeexpired
+    public bool episodeDoneFlag; 
     
     public bool sidePenaltyFlag;
     public bool turnSidePenaltyFlag;
@@ -94,7 +97,7 @@ public class CarController : MonoBehaviour
         PositionCalculation();
     }
 
-    //Not in use because of CarAgentScript
+    //Not in use because of CarAgentScript, used in previous version
     public void GetInput()
     {
         horizontalInput = Input.GetAxis(HORIZONTAL);
