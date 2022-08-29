@@ -38,7 +38,7 @@ public class CarAgentScript : Agent
     public float episodeTimer;
     //UIScript access on roadCounter 
     public float CAroadCounterText;
-    //UIScript για access στο DifficultySelector 
+    //UIScript access on DifficultySelector 
     public float CAdifficultySelectorText;
     
     public float accelerationReward;
