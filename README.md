@@ -1,6 +1,6 @@
 # Thesis: Navigation of Self-Driving Vehicle in Controlled Environment, made with Unity
 
-This project was my thesis, made for my computer science studies.
+This project was my thesis, made for my computer science studies. There is more detail on my official project report.
 
 ## Abstract
 
