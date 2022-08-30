@@ -89,7 +89,7 @@ public class CarController : MonoBehaviour
         PositionCalculation();
     }
 
-    //Not in use because of CarAgentScript, used in previous version
+    // Not in use because of CarAgentScript, used in previous version
     public void GetInput()
     {
         horizontalInput = Input.GetAxis(HORIZONTAL);
@@ -102,7 +102,7 @@ public class CarController : MonoBehaviour
         }
     }
 
-    //Not in use because of MakeCarAction(), used in previous version
+    // Not in use because of MakeCarAction(), used in previous version
     public void HandleMotor()
     {
         frontLeftWheelCollider.motorTorque = 1 * motorForce ;// 2.3f;
@@ -118,7 +118,7 @@ public class CarController : MonoBehaviour
         rearLeftWheelCollider.brakeTorque = currentBrakeForce;
     }
 
-    //Not in use because of MakeCarAction(), used in previous version
+    // Not in use because of MakeCarAction(), used in previous version
     public void HandleSteering()
     {
         currentSteerAngle = maxSteerAngle * horizontalInput / 2.3f;
@@ -257,6 +257,7 @@ public class CarController : MonoBehaviour
         if(other.tag =="LeftTurn"){leftTurnSidePenaltyFlag=true;timerStackedFlag=true;}
         if(other.tag =="RightTurn"){rightTurnSidePenaltyFlag=true;timerStackedFlag=true;}
     }
+
     private void OnTriggerExit(Collider other)
     {
         // Check if the car exits the side of the road
