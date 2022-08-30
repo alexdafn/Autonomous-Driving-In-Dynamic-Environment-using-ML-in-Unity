@@ -20,7 +20,7 @@ public class RoadSpawnerManager : MonoBehaviour
 
     public void SpawnTriggerEntered()
     {
-        //Difficulty Selection according to the roads that have been spawned already
+        //Difficulty Selection according to the roads that have been spawned already (5=easiest, 2=hardest)
         if (counter>30 && counter<=60){ 
             difficultySelector=4;
             Debug.Log("counter is " + counter +"AND difficulty is "+ difficultySelector);
