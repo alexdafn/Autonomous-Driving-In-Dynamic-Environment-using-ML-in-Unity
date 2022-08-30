@@ -12,11 +12,11 @@ The subject of this thesis is the development of a driving simulator for an auto
 
 The main training script. It combines and uses every other script for the training process. It uses the neural network that has been produced after the training, to auto-drive the vehicle.
 
-In this script, agent-car collects its environmental observations (speed and car's direction)`CollectObservations(VectorSensor sensor)`. It also randomly selects an action (UpKey-acceleration, DownKey-brake, LeftKey-Left steer, RightKey-Right steer), which will reward it, according to the policy that has been given to it. In the same function, the roads is rendered dynamicly, creating a new piece at the end of the path, while deleting the first road piece. The 
+In this script, agent-car collects its environmental observations (speed and car's direction) with `CollectObservations(VectorSensor sensor)`. It also randomly selects an action (UpKey-acceleration, DownKey-brake, LeftKey-Left steer, RightKey-Right steer), which will reward it, according to the policy that has been given to it, using `OnActionReceived(float[] vectorAction)`. In the same function, the roads is rendered dynamicly, creating a new piece at the end of the path, while deleting the first road piece, as the agents progresses further. The function `Heuristic(float[] actionsOut)` is used for testing the car's movements with the keyboard, in combination with OnActionReceived. Finally, the function `OnEpisodeBegin()` is used at the beginning of each episode, to reset every previous value before the episode ends and places the car at the initial position.
 
 ## CarController.cs
 
-
+This script is responsible for the car's realistic movement.
 
 ## RoadSpawner.cs
 
