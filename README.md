@@ -10,10 +10,18 @@ The subject of this thesis is the development of a driving simulator for an auto
 
 ## CarAgentScript.cs
 
+
+
 ## CarController.cs
+
+
 
 ## RoadSpawner.cs
 
+
+
 ## RoadSpawnerManager.cs
+
+
 
 ## DrivingNeuralNetwork.nn and Training Process
