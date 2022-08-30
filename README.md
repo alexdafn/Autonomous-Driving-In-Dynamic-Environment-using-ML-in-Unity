@@ -32,7 +32,7 @@ In this script helpful information reaches the game screen, for better understan
 
 ## DrivingNeuralNetwork.nn and Training Process
 
-The training process has been executed according to the Unity ML-Agents toolkit standards [ML-Agents Unity](https://github.com/Unity-Technologies/ml-agents/blob/release_2_verified_docs/docs/Getting-Started.md). With a lot of trial and error and many reconstructions of the policy, the training has succeeded. The produced neural network *DrivingNeuralNetwork.nn* is being dragged and dropped to the car object, on Unity's editor and the agent is ready to drive itself autonomously, on every possible road combination that is being rendered every time. 
+The training process has been executed according to the Unity ML-Agents toolkit standards at "[ML-Agents Unity](https://github.com/Unity-Technologies/ml-agents/blob/release_2_verified_docs/docs/Getting-Started.md)". With a lot of trial and error and many reconstructions of the policy, the training has succeeded. The produced neural network *DrivingNeuralNetwork.nn* is being dragged and dropped to the car object, on Unity's editor and the agent is ready to drive itself autonomously, on every possible road combination that is being rendered every time. 
 
 ## DEMO 1: Easy road path
 
