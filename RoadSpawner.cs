@@ -4,19 +4,20 @@ using UnityEngine;
 
 public class RoadSpawner : MonoBehaviour
 {
-    public List<GameObject> roadPrefabs;
-    public Vector3 nextSpawnPoint; //z=-15 apo unity
+    public List<GameObject> roadPrefabs; // List on Unity Editor with possible road pieces
+    public Vector3 nextSpawnPoint; //z=-15 in unity
     public int turnRoadFlag = 0 ;
     public int maxRoadsActiveCounter=0;
     int chance; 
     int houseDestroyFlag = 7;
     int treeDestroyFlag = 5;
 
-    
+    // Spawns a given road piece, then randomly, with chance deletes trees and houses
     public void SpawnRoadPiece(int roadIndex = 1, int rotationValue=0){
         GameObject temp = Instantiate(roadPrefabs[roadIndex], nextSpawnPoint, Quaternion.Euler(0,rotationValue,0));
-        nextSpawnPoint = temp.transform.GetChild(1).transform.position;
+        nextSpawnPoint = temp.transform.GetChild(1).transform.position; //moves nextSpawnPoint at the end of the last piece placed
        
+       // Flags for the next road piece to be placed with the right angle
         if (roadIndex==2){
             turnRoadFlag=2; //left Turn
         }else if (roadIndex==3){
