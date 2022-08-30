@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class RoadSpawnerManager : MonoBehaviour
 {
+    // Making a reference for an instance of class RoadSpawnerManager
     private RoadSpawner roadSpawner;
 
     public int counter = 0;
@@ -17,11 +18,9 @@ public class RoadSpawnerManager : MonoBehaviour
         roadSpawner = GameObject.FindObjectOfType<RoadSpawner>();
     }
 
-    
-
     public void SpawnTriggerEntered()
     {
-        //Difficulty Selection according to the roads that have been spawned
+        //Difficulty Selection according to the roads that have been spawned already
         if (counter>30 && counter<=60){ 
             difficultySelector=4;
             Debug.Log("counter is " + counter +"AND difficulty is "+ difficultySelector);
@@ -35,21 +34,15 @@ public class RoadSpawnerManager : MonoBehaviour
             Debug.Log("counter is " + counter +"AND STARTING difficulty is "+ difficultySelector);
         }
 
-        //roadSpawner.SpawnRoadPiece(1,0);
-
-        
         //Road Spawning
+        //The first piece every "difficultySelector" steps will be a straight lane to avoid conflicts
         if (counter%difficultySelector!=0){
             roadSelector=1;
-            //roadSpawner.SpawnRoadPiece(1,0);
             roadSpawner.SpawnRoadPiece(roadSelector,rotationSelector);
             roadSpawner.maxRoadsActiveCounter++;
-           
             counter++;
-        }else if (counter%difficultySelector==0){
-            //roadSelector=rnd.Next(1,4);
+        }else if (counter%difficultySelector==0){ //Chance for any road piece to be selected
             roadSelector=Random.Range(1,4);
-            //roadSpawner.SpawnRoadPiece(3,0);
             roadSpawner.SpawnRoadPiece(roadSelector,rotationSelector);
             if(roadSelector==2){
                 rotationSelector-=90;
@@ -58,40 +51,6 @@ public class RoadSpawnerManager : MonoBehaviour
             }
             roadSpawner.maxRoadsActiveCounter++;
             counter++;
-        }  /*
-        else if (counter>5 && counter<10){
-            roadSpawner.SpawnRoadPiece(1,90);
-            counter++;
-        }else if(counter==10){
-            roadSpawner.SpawnRoadPiece(3,90);
-            counter++;
-        }else{
-            roadSpawner.SpawnRoadPiece(1,180);
-            counter++;
-        }*/
-        //if (1) then 
-       // Destroy(gameObject, 2);
+        }  
     }
-      /*
-    public void SpawnTriggerEntered()
-    {
-        if (counter<5){
-            //roadSpawner.SpawnRoadPiece(1,0);
-            roadSpawner.SpawnRoadPiece(roadSelector,rotationSelector);
-            counter++;
-        }else if (counter==5){
-            roadSpawner.SpawnRoadPiece(3,0);
-            counter++;
-        }
-        else if (counter>5 && counter<10){
-            roadSpawner.SpawnRoadPiece(1,90);
-            counter++;
-        }else if(counter==10){
-            roadSpawner.SpawnRoadPiece(3,90);
-            counter++;
-        }else{
-            roadSpawner.SpawnRoadPiece(1,180);
-            counter++;
-        }
-    }*/
 }
