@@ -10,7 +10,9 @@ The subject of this thesis is the development of a driving simulator for an auto
 
 ## CarAgentScript.cs
 
+The main training script. It combines and uses every other script for the training process. It uses the neural network that has been produced after the training, to auto-drive the vehicle.
 
+In this script, agent-car collects its environmental observations (speed and car's direction). It also randomly selects an action (UpKey-acceleration, DownKey-brake, LeftKey-Left steer, RightKey-Right steer), which will reward it, according to the policy that has been given to it. In the same function, the roads is rendered dynamicly, creating a new piece at the end of the path, while deleting the first road piece. The 
 
 ## CarController.cs
 
