@@ -80,6 +80,7 @@ public class CarAgentScript : Agent
         sensor.AddObservation(transform.rotation.y); // car's angle on y
     }
 
+    // While training, gets a random action and then evaluates its results
     public override void OnActionReceived(float[] vectorAction)
     {
         // move forward or brake
