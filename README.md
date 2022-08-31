@@ -41,4 +41,4 @@ https://user-images.githubusercontent.com/32633615/187568178-bb1e1d4d-f5db-4d8d-
 
 ## DEMO 2: Hard road path
 
-https://user-images.githubusercontent.com/32633615/187568203-3d6a75ac-1dd5-4056-8954-97537cb79590.mp4
+https://user-images.githubusercontent.com/32633615/187568607-680bee47-20ca-4994-9727-293e2746cbba.mp4
