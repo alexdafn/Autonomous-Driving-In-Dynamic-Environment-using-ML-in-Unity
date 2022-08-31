@@ -1,6 +1,7 @@
 # Thesis: Navigation of Self-Driving Vehicle in Controlled Environment, made with Unity
 
-This project was my thesis, made for my computer science studies. There is more detail on my official project report.
+This project was my thesis, made for my computer science studies. There is more detail in greek, on my official project report.
+[Thesis - Navigation of Self-Driving Vehicle in Controlled Environment, made with Unity.pdf](https://github.com/alexdafn/Autonomous-Driving-In-Dynamic-Environment-using-ML-in-Unity/files/9457343/Thesis.-.Navigation.of.Self-Driving.Vehicle.in.Controlled.Environment.made.with.Unity.pdf)
 
 ## Abstract
 
@@ -36,5 +37,8 @@ The training process has been executed according to the Unity ML-Agents toolkit 
 
 ## DEMO 1: Easy road path
 
+https://user-images.githubusercontent.com/32633615/187568178-bb1e1d4d-f5db-4d8d-9d9c-7b5ac37c91da.mp4
 
 ## DEMO 2: Hard road path
+
+https://user-images.githubusercontent.com/32633615/187568203-3d6a75ac-1dd5-4056-8954-97537cb79590.mp4
